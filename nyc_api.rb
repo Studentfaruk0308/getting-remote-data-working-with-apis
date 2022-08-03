@@ -19,10 +19,30 @@ require 'json'
       end
     end
 
+    def program_type
+      programs = JSON.parse(self.get_programs)
+      programs.collect do |program|
+        program["program_type"]  
+      end
+    end
+
+    def site_name
+      programs = JSON.parse(self.get_programs)
+      programs.collect do |program|
+        program["site_name"]  
+      end
+    end
+
 end
 
 #  programs = GetPrograms.new.get_programs
 #  puts programs
 
+# programs = GetPrograms.new
+# puts programs.program_school.uniq
+
+# programs = GetPrograms.new
+# puts programs.program_type.uniq
+
 programs = GetPrograms.new
-puts programs.program_school.uniq
+puts programs.site_name.uniq
